@@ -13,7 +13,7 @@ def main():
     #inference
 
     st.subheader("Inference uploading a dataset")
-    file = st.file_uploader("Upload a dataset of penguins", type=["csv", "xlsx"])
+    file = st.file_uploader("Upload a dataset of immobili", type=["csv", "xlsx"])
 
     if file is not None:
             
@@ -28,16 +28,17 @@ def main():
         dfdesc = df.describe(include='all').T.fillna("")
         st.write(dfdesc)
 
-        
-        df_pred = model.predict(df)
-        df['species'] = df_pred
+        top_features = ['lstat', 'rm', 'ptratio', 'indus']
+        X = df[top_features]
+        df_pred = model.predict(X)
+        X['price'] = df_pred
         st.write('Updated Dataframe')
-        st.dataframe(df)
+        st.dataframe(X)
 
 
         # Download buttons
-        csv = convert_df(df)
-        filename = "penguins_predicted_data"
+        csv = convert_df(X)
+        filename = "immobili_data"
 
         st.download_button(
             label="Download data as CSV",

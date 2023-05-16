@@ -6,15 +6,10 @@ def main():
 
     model = load_model()
 
-    st.subheader("in Progress...")
-    islands = ['Torgersen', 'Biscoe Island', 'Dream']
-    island = st.selectbox('Select island: ', islands)
     input2 = st.number_input("bill_length_mm", value=0.00)
     input3 = st.number_input("bill_depth_mm", value=0.00)
     input4 = st.number_input("flipper_length_mm", value=0.00)
     input5 = st.number_input("body_mass_g", value=0.00)
-    sex_options = ['Male', 'Female']
-    sex = st.selectbox('Select sex: ', sex_options)
 
     data = {
         "Island": [island],

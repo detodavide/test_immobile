@@ -9,7 +9,7 @@ def main():
     st.set_option('deprecation.showPyplotGlobalUse', False)
     add_bg_from_url()
 
-    st.title("Inference")
+    st.title("Inference of 'Immobili' dataset")
 
     st.subheader("Select between manual input or from a csv/xlsx file as input data")
 
