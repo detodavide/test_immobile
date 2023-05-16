@@ -31,13 +31,13 @@ def main():
         top_features = ['lstat', 'rm', 'ptratio', 'indus']
         X = df[top_features]
         df_pred = model.predict(X)
-        X['price'] = df_pred
+        df['price'] = df_pred
         st.write('Updated Dataframe')
-        st.dataframe(X)
+        st.dataframe(df)
 
 
         # Download buttons
-        csv = convert_df(X)
+        csv = convert_df(df)
         filename = "immobili_data"
 
         st.download_button(
