@@ -6,27 +6,31 @@ def main():
 
     model = load_model()
 
-    input2 = st.number_input("bill_length_mm", value=0.00)
-    input3 = st.number_input("bill_depth_mm", value=0.00)
-    input4 = st.number_input("flipper_length_mm", value=0.00)
-    input5 = st.number_input("body_mass_g", value=0.00)
+    #['lstat', 'rm', 'ptratio', 'indus']
+
+    input1 = st.number_input("lstat", value=0.00)
+    input2 = st.number_input("rm", value=0.00)
+    input3 = st.number_input("ptratio", value=0.00)
+    input4 = st.number_input("indus", value=0.00)
+
+
 
     data = {
-        "Island": [island],
-        "bill_length_mm": [input2],
-        "bill_depth_mm": [input3],
-        "flipper_length_mm": [input4],
-        "body_mass_g": [input5],
-        "sex": [sex]
+        "lstat": [input1],
+        "rm": [input2],
+        "ptratio": [input3],
+        "indus": [input4],
     }
 
     df = pd.DataFrame(data)
-    X = pd.get_dummies(df).to_numpy()
-    st.dataframe(X)
-    y = model.predict(X)
+    st.dataframe(df)
+    y = model.predict(df)
 
-    # Display the prediction
-    st.write("Prediction: ", y)
+    prediction = round(y[0], 2)
+    prediction_color = "white"
+
+    # Display the prediction with the specified color
+    st.write("Prediction: ", f'<span style="color:{prediction_color}">{prediction}</span>', unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
